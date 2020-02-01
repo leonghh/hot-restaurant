@@ -23,90 +23,53 @@
                     Reversations</button></a>
             <a href="/"><button class="btn btn-primary btn-lg"><span class="fas fa-home"></span> </button></a>
         </div>
+
         <h3><strong>Current reservations</strong></h3>
+        <div id="reservationList">
+            
+        </div>
+
         <div class="row">
 
-            <div class="col-12">
-            </div>
+            <br>
 
-            <div class="card">
-                <div class="card-header">
-                </div>
-                <div class="card-body">
-                    <h2 id="tableNumber">Table #1</h2>
-                    <div id="reservation1">
-                        <h3><strong>ID:</strong> <span id="ID">ID</span></h3>
-                        <h3><strong>Name:</strong> <span id="name">Name</span></h3>
-                        <h3><strong>Email:</strong> <span id="Email">Email</span></h3>
-                        <h3><strong>phone:</strong> <span id="Phone">Phone</span></h3>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                </div>
-                <div class="card-body">
-                    <h2 id="tableNumber2">Table #2</h2>
-                    <div id="reservation2">
-                        <h3><strong>ID:</strong> <span id="ID2">ID</span></h3>
-                        <h3><strong>Name:</strong> <span id="name2">Name</span></h3>
-                        <h3><strong>Email:</strong> <span id="Email2">Email</span></h3>
-                        <h3><strong>phone:</strong> <span id="Phone2">Phone</span></h3>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                </div>
-                <div class="card-body">
-                    <h2 id="tableNumber3">Table #3</h2>
-                    <div id="reservation3">
-                        <h3><strong>ID:</strong> <span id="ID3">ID</span></h3>
-                        <h3><strong>Name:</strong> <span id="name3">Name</span></h3>
-                        <h3><strong>Email:</strong> <span id="Email3">Email</span></h3>
-                        <h3><strong>phone:</strong> <span id="Phone3">Phone</span></h3>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                </div>
-                <div class="card-body">
-                    <h2 id="tableNumber4">Table #4</h2>
-                    <div id="reservation4">
-                        <h3><strong>ID:</strong> <span id="ID4">ID</span></h3>
-                        <h3><strong>Name:</strong> <span id="name4">Name</span></h3>
-                        <h3><strong>Email:</strong> <span id="Email4">Email</span></h3>
-                        <h3><strong>phone:</strong> <span id="Phone4">Phone</span></h3>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                </div>
-                <div class="card-body">
-                    <h2 id="tableNumber5">Table #5</h2>
-                    <div id="reservation5">
-                        <h3><strong>ID:</strong> <span id="ID5">ID</span></h3>
-                        <h3><strong>Name:</strong> <span id="name5">Name</span></h3>
-                        <h3><strong>Email:</strong> <span id="Email5">Email</span></h3>
-                        <h3><strong>phone:</strong> <span id="Phone5">Phone</span></h3>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <br>
             <h3><strong>Waiting List</strong></h3>
-            <div ID="waitList">
-
+            <div id="waitList">
             </div>
 
             <br>
-            
+
             <div class="container">
-                <a href="/">API table Link</a>
-                <br><a href="/">API Wait list </a>
+                <a href="/api/tables">API table Link</a>
+                <br><a href="/api/waitlist">API Wait list </a>
             </div>
+
+            <script>
+                $.get("/api/tables", function (data) {
+                    console.log(data)
+                    for (i = 0; i < data.length; i++) {
+                        var reservationBox = $("<div>");
+
+                        var name = $("<div>");
+                        name.text(data.name);
+
+                        var email = $("<div>");
+                        email.text(data.email);
+
+                        var phone = $("<div>");
+                        phone.text(data.phone);
+
+                        var id = $("<div>");    
+                        id.text(data.id);   
+                        
+                        $("#reservationList").append(reservationBox);
+                        reservationBox.append(name);
+                        reservationBox.append(email);
+                        reservationBox.append(phone);
+                        reservationBox.append(id);
+                    }
+                });
+            </script>
 </body>
 
 </html>
