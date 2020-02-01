@@ -13,7 +13,7 @@ app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "home.html"));
 });
 
-app.get("/view", function (req, res) {
+app.get("/table", function (req, res) {
 
     res.sendFile(path.join(__dirname, "view.html"));
 });
