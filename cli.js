@@ -30,7 +30,7 @@ app.get("/api/waitlist", function (req, res) {
     return res.json(waitList);
 });
 
-app.post("/api/reserver", function (req, res) {
+app.post("/api/reserve", function (req, res) {
     let newTable = req.body;
     if (tables.length < 5) {
         tables.push(newTable);

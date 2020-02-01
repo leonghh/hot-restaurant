@@ -6,8 +6,9 @@ $("#submit-btn").on("click", function() {
         email: $("#email").val().trim(),
         id: $("#id").val().trim(),
     }
+    console.log(newTable);
 
-    $.post("api/reserver", newTable)
+    $.post("api/reserve", newTable)
         .then(function(data) {
             console.log("reserve.html", data);
             alert("You are officially booked. Looking forward to seeing you!");
